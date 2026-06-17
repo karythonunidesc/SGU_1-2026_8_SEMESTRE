@@ -8,6 +8,7 @@ from flask_migrate import Migrate
 from flask_marshmallow import Marshmallow
 from flask_restful import Api
 from flasgger import Swagger
+from flask_cors import CORS
 
 app = Flask(__name__)
 app.config.from_object('connection')
@@ -15,6 +16,8 @@ db = SQLAlchemy(app)
 migrate = Migrate(app, db)
 ma = Marshmallow(app)
 api = Api(app)
+
+CORS(app)
 
 
 swagger = Swagger(app, config={
